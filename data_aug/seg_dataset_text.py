@@ -426,11 +426,12 @@ class ContrastiveLearningLevelDatasetSEG:
                         seg_music(music_path, choe[k])
                         seg_list = os.listdir(SEG_PATH + choe[k] + '/')
                         seg_list.sort()
+                        music_data = np.zeros(
+                                    (music_arr.shape[0], len(seg_list), int(40 + 40 + 84 + 384 + 1), music_param))
                         for i in range(music_arr.shape[0]):
                             for n in range(len(seg_list)):
                                 y, sr = librosa.load(SEG_PATH + choe[k] + '/' + seg_list[n])
-                                music_data = np.zeros(
-                                    (music_arr.shape[0], len(seg_list), int(40 + 40 + 84 + 384 + 1), music_param))
+                                
                                 music = MusicFeatures(y, SR, N_MFCCs, HOP_LENGTH, figures=False)
                                 # music = MusicFeatures(music_arr[i], SR, N_MFCCs, HOP_LENGTH, figures=False)
                                 music_data[i, n, :, :] = music.generate_features()
@@ -451,7 +452,7 @@ class ContrastiveLearningLevelDatasetSEG:
                                 for a1 in range(3):
                                     hit_rates.append(hitR)
                             if self.train == True:
-                                if self.k != N:
+                                if self.k != arr.shape[0]:
                                     # motion_ls.append(arr[:int(self.k - self.k/SPLIT_RATIO),:,:,:,:])
                                     # music_ls.append(music_data[:int(self.k - self.k / SPLIT_RATIO), :, :])
                                     # motion_label.append([int((id + label_count * 3))] * arr[:int(self.k - self.k/SPLIT_RATIO),:,:,:,:].shape[0])
@@ -463,7 +464,7 @@ class ContrastiveLearningLevelDatasetSEG:
                                     music_ls.append(music_data[:self.k, :, :])
                                     #motion_label.append([int((id + label_count * 3))] *self.k)
                             else:
-                                if self.k != N:#change dan zanshi buxuyao pao 20/40/60 cai xuyao
+                                if self.k != arr.shape[0]:
                                     # motion_ls.append(arr[int(self.k - self.k/SPLIT_RATIO):,:,:,:,:])
                                     # music_ls.append(music_data[int(self.k - self.k/SPLIT_RATIO):,:,:])
                                     # motion_label.append([int((id + label_count * 3))]*arr[int(self.k - self.k/SPLIT_RATIO):,:,:,:,:].shape[0])
@@ -493,11 +494,12 @@ class ContrastiveLearningLevelDatasetSEG:
                             seg_music(music_path, choe[k])
                             seg_list = os.listdir(SEG_PATH + choe[k] + '/')
                             seg_list.sort()
+                            muf = np.zeros(
+                                        (music_arr.shape[0], len(seg_list), int(40 + 40 + 84 + 384 + 1), music_param))
                             for i in range(music_arr.shape[0]):
                                 for n in range(len(seg_list)):
                                     y, sr = librosa.load(SEG_PATH + choe[k] + '/' + seg_list[n])
-                                    muf = np.zeros(
-                                        (music_arr.shape[0], len(seg_list), int(40 + 40 + 84 + 384 + 1), music_param))
+                                    
                                     music = MusicFeatures(y, SR, N_MFCCs, HOP_LENGTH, figures=False)
                                     # music = MusicFeatures(music_arr[i], SR, N_MFCCs, HOP_LENGTH, figures=False)
                                     muf[i, n, :, :] = music.generate_features()
@@ -513,10 +515,11 @@ class ContrastiveLearningLevelDatasetSEG:
                             seg_music(music_path,choe[k])
                             seg_list = os.listdir(SEG_PATH+choe[k]+'/')
                             seg_list.sort()
+                            muf = np.zeros((music_arr.shape[0], len(seg_list),int(40 + 40 + 84 + 384 + 1), music_param))
                             for i in range(music_arr.shape[0]):
                                 for n in range(len(seg_list)):
                                     y, sr = librosa.load(SEG_PATH+choe[k]+'/' + seg_list[n])
-                                    muf = np.zeros((music_arr.shape[0], len(seg_list),int(40 + 40 + 84 + 384 + 1), music_param))
+                                    
                                     music = MusicFeatures(y, SR, N_MFCCs, HOP_LENGTH, figures=False)
                                     #music = MusicFeatures(music_arr[i], SR, N_MFCCs, HOP_LENGTH, figures=False)
                                     muf[i, n, :, :] = music.generate_features()
@@ -533,11 +536,12 @@ class ContrastiveLearningLevelDatasetSEG:
                             seg_music(music_path, choe[k])
                             seg_list = os.listdir(SEG_PATH + choe[k] + '/')
                             seg_list.sort()
+                            muf = np.zeros(
+                                        (music_arr.shape[0], len(seg_list), int(40 + 40 + 84 + 384 + 1), music_param))
                             for i in range(mu.shape[0]):
                                 for n in range(len(seg_list)):
                                     y, sr = librosa.load(SEG_PATH + choe[k] + '/' + seg_list[n])
-                                    muf = np.zeros(
-                                        (music_arr.shape[0], len(seg_list), int(40 + 40 + 84 + 384 + 1), music_param))
+                                    
                                     music = MusicFeatures(y, SR, N_MFCCs, HOP_LENGTH, figures=False)
                                     # music = MusicFeatures(music_arr[i], SR, N_MFCCs, HOP_LENGTH, figures=False)
                                     muf[i, n, :, :] = music.generate_features()
@@ -552,11 +556,12 @@ class ContrastiveLearningLevelDatasetSEG:
                             seg_music(music_path, choe[k])
                             seg_list = os.listdir(SEG_PATH + choe[k] + '/')
                             seg_list.sort()
+                            muf = np.zeros(
+                                        (music_arr.shape[0], len(seg_list), int(40 + 40 + 84 + 384 + 1), music_param))
                             for i in range(mu.shape[0]):
                                 for n in range(len(seg_list)):
                                     y, sr = librosa.load(SEG_PATH + choe[k] + '/' + seg_list[n])
-                                    muf = np.zeros(
-                                        (music_arr.shape[0], len(seg_list), int(40 + 40 + 84 + 384 + 1), music_param))
+                                    
                                     music = MusicFeatures(y, SR, N_MFCCs, HOP_LENGTH, figures=False)
                                     # music = MusicFeatures(music_arr[i], SR, N_MFCCs, HOP_LENGTH, figures=False)
                                     muf[i, n, :, :] = music.generate_features()

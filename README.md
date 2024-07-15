@@ -17,6 +17,11 @@ To run the code, please install the dependency libraries by using the following 
 ```
 pip3 install -r requirements_20230816.txt
 ```
+or try
+```
+pip install --upgrade pip
+cat requirements_20230816.txt |xargs -n 1 pip install
+```
 
 #### 2. Prepare the Pre-trained Model
 The dance motion-music model is pretrained by using our [ImperialDance Dataset](https://github.com/YunZhongNikki/ImperialDance-Dataset/tree/main).
